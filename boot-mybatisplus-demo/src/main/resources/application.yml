@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: demo-service
+  swagger:
+    package: com.cloud.demo.mybatisplus.controller
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+  datasource:
+    driverClassName: com.p6spy.engine.spy.P6SpyDriver
+    url: jdbc:p6spy:mysql://127.0.0.1:3306/cloud_demo_test?characterEncoding=utf-8&autoReconnect=true
+    username: root
+    password: 1qaz@WSX
+    test-on-borrow: true
+    test-while-idle: true
+server:
+  port: 11002
+
+mybatis-plus:
+  type-aliases-package: com.cloud.demo.mybatisplus.dao.bean
+  configuration:
+    map-underscore-to-camel-case: true
+
+

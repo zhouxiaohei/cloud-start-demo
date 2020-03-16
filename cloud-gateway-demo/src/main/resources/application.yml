@@ -1,0 +1,37 @@
+server:
+  port: 19000
+
+spring:
+  application:
+    name: common-gateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lowerCaseServiceId: true
+      routes:
+        - id: common-service
+          uri: lb://common-service
+          predicates:
+            - Path=/api/v1/common/**
+          filters:
+            - StripPrefix=2
+            - RequestTime=true
+
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:19001/eureka/
+    healthcheck:
+      enabled: true
+  instance:
+    metadata-map:
+      instanceId: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+    hostname: ${spring.cloud.client.ip-address}
+
+
+logging:
+  level:
+    org.springframework.cloud.gateway: debug

@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: demo-service
+  swagger:
+    package: com.cloud.demo.bootswagger.controller
+
+server:
+  port: 11001
+
+demo:
+  test:
+    intTest: ${random.int[10,20]}
+
+
+
+
