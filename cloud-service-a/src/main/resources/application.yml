@@ -12,7 +12,7 @@ server:
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://127.0.0.l:19001/eureka/
+      defaultZone: http://localhost:19001/eureka/
     healthcheck:
       enabled: true
   instance:
@@ -22,6 +22,4 @@ eureka:
       lease-renewal-interval-in-seconds: 10
       # 续约到期时间  最后一次心跳时间后N秒就认为是下线了【#此配置建议只适用开发和测试环境，生产环境建议使用默认值】
       lease-expiration-duration-in-seconds: 20
-    hostname: ${spring.cloud.client.ip-address}
-
 
