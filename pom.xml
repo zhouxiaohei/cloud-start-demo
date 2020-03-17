@@ -15,6 +15,7 @@
         <module>cloud-eureka-demo</module>
         <module>cloud-gateway-demo</module>
         <module>cloud-service-a</module>
+        <module>cloud-service-b</module>
     </modules>
 
     <properties>

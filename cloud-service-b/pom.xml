@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>cloud-service-a</artifactId>
+    <artifactId>cloud-service-b</artifactId>
 
     <dependencyManagement>
         <dependencies>
@@ -82,7 +82,7 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <mainClass>com.cloud.demo.servicea.ServiceaApp</mainClass>
+                    <mainClass>com.cloud.demo.servicea.ServicebApp</mainClass>
                 </configuration>
             </plugin>
         </plugins>

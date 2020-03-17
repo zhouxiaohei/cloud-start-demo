@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: service-b
+  swagger:
+    package: com.cloud.demo.serviceb.controller
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+server:
+  port: 11004
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://127.0.0.l:19001/eureka/
+    healthcheck:
+      enabled: true
+  instance:
+    metadata-map:
+      instanceId: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+      # 续约更新(心跳时间间隔)时间  默认30秒【#此配置建议只适用开发和测试环境，生产环境建议使用默认值】
+      lease-renewal-interval-in-seconds: 10
+      # 续约到期时间  最后一次心跳时间后N秒就认为是下线了【#此配置建议只适用开发和测试环境，生产环境建议使用默认值】
+      lease-expiration-duration-in-seconds: 20
+    hostname: ${spring.cloud.client.ip-address}
+
+
