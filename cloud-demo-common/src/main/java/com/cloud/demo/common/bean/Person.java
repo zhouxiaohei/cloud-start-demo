@@ -1,4 +1,4 @@
-package com.cloud.demo.servicea.bean;
+package com.cloud.demo.common.bean;
 
 
 import io.swagger.annotations.ApiModelProperty;

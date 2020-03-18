@@ -1,14 +1,13 @@
 package com.cloud.demo.servicea.controller;
 
 import com.cloud.demo.common.WebResponse;
-import com.cloud.demo.servicea.bean.Person;
+import com.cloud.demo.common.bean.Person;
 import com.cloud.demo.servicea.service.PersonService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -47,16 +46,9 @@ public class PersonController {
     //@ApiImplicitParams({@ApiImplicitParam(name = "id", value = "用户id")})
     @ApiImplicitParam(name = "id", value = "用户id")
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    public WebResponse delete(@PathVariable("id") String id){
+    public WebResponse<Person> delete(@PathVariable("id") String id){
         log.info("调用删除接口");
-        return WebResponse.builder().result(personService.delete(id)).build();
-    }
-
-    @ApiOperation("更新")
-    @RequestMapping(value = "/update", method = RequestMethod.POST)
-    public WebResponse<Person> update(@ModelAttribute Person person){
-        log.info("调用保存接口");
-        return WebResponse.<Person>builder().result(personService.save(person)).build();
+        return WebResponse.<Person>builder().result(personService.delete(id)).build();
     }
 
 }

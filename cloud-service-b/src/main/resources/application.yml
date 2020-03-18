@@ -12,7 +12,7 @@ server:
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://127.0.0.l:19001/eureka/
+      defaultZone: http://localhost:19001/eureka/
     healthcheck:
       enabled: true
   instance:

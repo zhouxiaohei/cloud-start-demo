@@ -2,6 +2,7 @@ package com.cloud.demo.serviceb.config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
@@ -14,6 +15,7 @@ import springfox.documentation.spring.web.plugins.Docket;
  * @Author JackZhou
  * @Date 2020/3/16  17:37
  **/
+@Configuration
 public class ServicebConfig {
 
     @Value("${spring.swagger.package:com.cloud.demo}")

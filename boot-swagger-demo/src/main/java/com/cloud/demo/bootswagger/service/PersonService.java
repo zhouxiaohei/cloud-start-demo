@@ -1,6 +1,6 @@
 package com.cloud.demo.bootswagger.service;
 
-import com.cloud.demo.bootswagger.bean.Person;
+import com.cloud.demo.common.bean.Person;
 import com.google.common.collect.Maps;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cache.annotation.CacheEvict;
@@ -34,9 +34,8 @@ public class PersonService {
     }
 
     @CacheEvict(value = "person", key = "#id")
-    public Boolean delete(String id){
-        DATABASES.remove(id);
-        return null;
+    public Person delete(String id){
+        return DATABASES.remove(id);
     }
 
 }
