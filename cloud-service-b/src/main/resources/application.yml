@@ -9,6 +9,7 @@ spring:
 server:
   port: 11004
 
+
 eureka:
   client:
     serviceUrl:
@@ -24,4 +25,6 @@ eureka:
       lease-expiration-duration-in-seconds: 20
     hostname: ${spring.cloud.client.ip-address}
 
-
+feign:
+  hystrix:
+    enabled: true

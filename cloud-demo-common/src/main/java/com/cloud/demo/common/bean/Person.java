@@ -2,7 +2,9 @@ package com.cloud.demo.common.bean;
 
 
 import io.swagger.annotations.ApiModelProperty;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * @ClassName Person
@@ -11,6 +13,8 @@ import lombok.Data;
  **/
 
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Person {
    @ApiModelProperty(value="用户id")
    private String id;
