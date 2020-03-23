@@ -11,14 +11,12 @@ spring:
           enabled: true
           lowerCaseServiceId: true
       routes:
-        - id: common-service
-          uri: lb://common-service
+        - id: service-a
+          uri: lb://service-a
           predicates:
-            - Path=/api/v1/common/**
+            - Path=/api/v1/demo/servicea/**
           filters:
             - StripPrefix=2
-            - RequestTime=true
-
 
 eureka:
   client:

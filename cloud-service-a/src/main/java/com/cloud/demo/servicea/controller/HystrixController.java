@@ -30,7 +30,4 @@ public class HystrixController {
         return service.hystrixDemo(name);
     }
 
-
-
-
 }
