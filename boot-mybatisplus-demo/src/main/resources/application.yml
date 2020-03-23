@@ -13,6 +13,13 @@ spring:
     password: password
     test-on-borrow: true
     test-while-idle: true
+#    driverClassName: com.mysql.cj.jdbc.Driver
+#    url: jdbc:mysql://localhost:3306/cloud_demo_test?characterEncoding=utf-8&autoReconnect=true
+#    username: root
+#    password: password
+#    test-on-borrow: true
+#    test-while-idle: true
+
 server:
   port: 11002
 
