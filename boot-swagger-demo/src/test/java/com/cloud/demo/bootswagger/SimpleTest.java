@@ -11,11 +11,11 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest
 public class SimpleTest {
 
-    @Value("${demo.test.intTest}")
-    private Integer intTest;
+    @Value("${demo.test.mark}")
+    private String mark;
 
     @Test
-    public void testIntValue(){
-        System.out.println("打印测试数字：" + intTest);
+    public void testGetMark(){
+        System.out.println("打印版本：" + mark);
     }
 }

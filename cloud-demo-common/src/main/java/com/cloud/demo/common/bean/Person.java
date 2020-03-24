@@ -20,7 +20,7 @@ public class Person {
    private String id;
    @ApiModelProperty(value="用户名")
    private String name;
-   @ApiModelProperty(value="年纪")
+   @ApiModelProperty(value="年纪", example = "0")
    private Integer age;
 
 }

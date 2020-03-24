@@ -38,4 +38,14 @@ public class PersonService {
         return DATABASES.remove(id);
     }
 
+    @CachePut(value = "person", key = "#person.id")
+    public Person update(Person person) {
+        Person personOld = DATABASES.get(person.getId());
+        if(personOld == null){
+            return null;
+        }
+        Person personNew = DATABASES.put(person.getId(), person);
+        return personNew;
+    }
+
 }

@@ -8,6 +8,7 @@ import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -49,6 +50,12 @@ public class PersonController {
     public WebResponse<Person> delete(@PathVariable("id") String id){
         log.info("调用删除接口");
         return WebResponse.<Person>builder().result(personService.delete(id)).build();
+    }
+
+    @ApiOperation("更新实体")
+    @RequestMapping(value = "/update", method = RequestMethod.PUT)
+    public WebResponse<Person> update(@ModelAttribute Person person){
+        return WebResponse.<Person>builder().result(personService.update(person)).build();
     }
 
 }
