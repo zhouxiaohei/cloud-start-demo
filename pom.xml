@@ -16,6 +16,7 @@
         <module>cloud-gateway-demo</module>
         <module>cloud-service-a</module>
         <module>cloud-service-b</module>
+        <module>hystrix-demo</module>
     </modules>
 
     <properties>
