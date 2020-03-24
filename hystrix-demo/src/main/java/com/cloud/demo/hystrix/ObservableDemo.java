@@ -1,5 +1,6 @@
 package com.cloud.demo.hystrix;
 
+import lombok.extern.slf4j.Slf4j;
 import rx.Observable;
 import rx.Observer;
 import rx.Subscriber;
@@ -13,14 +14,15 @@ import java.util.concurrent.Future;
  * @description:
  * @date: 10:26 2018/10/31
  */
+@Slf4j
 public class ObservableDemo {
 
     /**
-     *  简单的rejava demo
+     *  简单的rxjava demo  观察者模式
      */
     public static void rxjavaDemo(){
 
-        // 创建事件源
+        // 创建事件源 即被观察者
         Observable<String> observable = Observable.create(new Observable.OnSubscribe<String>() {
             @Override
             public void call(Subscriber<? super String> subscriber) {
@@ -30,7 +32,7 @@ public class ObservableDemo {
             }
         });
 
-        // 创建订阅者
+        // 创建订阅者 即观察着
         Subscriber<String> subscriber = new Subscriber<String>() {
             @Override
             public void onCompleted() {
@@ -39,12 +41,12 @@ public class ObservableDemo {
 
             @Override
             public void onError(Throwable throwable) {
-                System.out.println(" error subscriber");
+                log.error(" error subscriber");
             }
 
             @Override
             public void onNext(String s) {
-                System.out.println("subscriber :" +  s);
+                log.info("subscriber : {}", s);
             }
         };
 
@@ -52,6 +54,7 @@ public class ObservableDemo {
         observable.subscribe(subscriber);
 
     }
+
 
     /**
      *  HystrixCommand执行的execute/queue  同步/异步
@@ -67,7 +70,7 @@ public class ObservableDemo {
         }else if(type == 2){
             Future<String> queue = command.queue(); // this.toObservable().toBlocking().toFuture();
             while (!queue.isDone()){
-                System.out.println("Do other things ...");
+                log.info("Do other things ...");
             }
             try {
                 result = queue.get();
@@ -79,7 +82,7 @@ public class ObservableDemo {
         }else{
             result = testObserve(command, type);
         }
-        System.out.println("执行结果：" + result);
+        log.info("执行结果：{}", result);
     }
 
     /**
@@ -99,7 +102,7 @@ public class ObservableDemo {
             observe.subscribe(new Observer<String>() {
                 @Override
                 public void onCompleted() {
-                    System.out.println("==============onCompleted");
+                    log.info("==============onCompleted");
                 }
 
                 @Override
@@ -109,7 +112,7 @@ public class ObservableDemo {
 
                 @Override
                 public void onNext(String s) {
-                    System.out.println("=========onNext: " + s);
+                    log.info("=========onNext: {}", s);
                 }
             });
 
@@ -117,7 +120,7 @@ public class ObservableDemo {
             observe.subscribe(new Action1<String>() {
                 @Override
                 public void call(String s) {
-                    System.out.println("==================call:" + s);
+                    log.info("==================call: {}", s);
                 }
             });
 
@@ -132,7 +135,7 @@ public class ObservableDemo {
             observable.subscribe(new Action1<String>() {
                 @Override
                 public void call(String s) {
-                    System.out.println("==================call:" + s);
+                    log.info("==================call: {}", s);
                 }
             });
             result = observable.toBlocking().single();
@@ -148,26 +151,24 @@ public class ObservableDemo {
             Observable<String> observe = hystrixObservableCommandDemo.observe();
             Iterator<String> iterator = observe.toBlocking().getIterator();
             while(iterator.hasNext()){
-                System.out.println("hystrixObservableCommand observe : " + iterator.next());
+                log.info("hystrixObservableCommand observe :{}", iterator.next());
             }
 
         }else if(type == 2){
             Observable<String> observable = hystrixObservableCommandDemo.toObservable();
             Iterator<String> iterator = observable.toBlocking().getIterator();
             while(iterator.hasNext()){
-                System.out.println("hystrixObservableCommand toObserve : " + iterator.next());
+                log.info("hystrixObservableCommand toObserve : {}", iterator.next());
             }
         }
-
 
     }
 
 
-
     public static void main(String[] args) {
+        //rxjavaDemo();  //运行rxJavaDemo
         //hystrixCommandDemo("呵呵呵哒", 3);
-        hystrixObservableCommandDemo("呵呵呵哒", 2);
-
+        //hystrixObservableCommandDemo("呵呵呵哒", 2);
     }
 
 
