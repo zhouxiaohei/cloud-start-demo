@@ -4,6 +4,7 @@ import com.cloud.demo.common.WebResponse;
 import com.cloud.demo.common.bean.Person;
 import com.cloud.demo.serviceb.feign.ServiceaFallbackService;
 import feign.hystrix.FallbackFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 /**
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Component;
  * @Date 2020/3/18  16:59
  **/
 @Component
+@Slf4j
 public class ServiceaFallbackFactory implements FallbackFactory<ServiceaFallbackService> {
 
     @Override
@@ -19,6 +21,7 @@ public class ServiceaFallbackFactory implements FallbackFactory<ServiceaFallback
         return new ServiceaFallbackService() {
             @Override
             public WebResponse<Person> getById(String id) {
+                log.info("出现异常打印：", throwable);
                 return null;
             }
 

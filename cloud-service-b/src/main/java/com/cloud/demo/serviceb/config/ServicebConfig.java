@@ -36,4 +36,10 @@ public class ServicebConfig {
                 .version("1.0.0-SNAPSHOT")
                 .build();
     }
+
+//    @Bean
+//    public IRule getRandom(){
+//       return new RandomRule();
+//    }
+
 }

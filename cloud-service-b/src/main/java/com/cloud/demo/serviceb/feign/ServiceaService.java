@@ -19,4 +19,7 @@ public interface ServiceaService {
 
     @RequestMapping(value = "/demo/servicea/person/{id}", method = RequestMethod.DELETE)
     WebResponse<Person> delete(@PathVariable("id") String id);
+
+    @RequestMapping(value = "/demo/servicea/person/getMark", method = RequestMethod.GET)
+    String getMark();
 }

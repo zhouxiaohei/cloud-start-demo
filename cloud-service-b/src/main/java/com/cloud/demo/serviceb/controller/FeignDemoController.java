@@ -51,4 +51,10 @@ public class FeignDemoController {
         return service.delete(id);
     }
 
+    @ApiOperation(value = "获取sever A mark")
+    @RequestMapping(value = "/getMark", method = RequestMethod.GET)
+    private String getMark(){
+        return service.getMark();
+    }
+
 }

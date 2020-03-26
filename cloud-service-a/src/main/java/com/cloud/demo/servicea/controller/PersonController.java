@@ -28,6 +28,15 @@ public class PersonController {
    @Autowired
    private PersonService personService;
 
+//    @Value("${self.server.mark}")
+//    private String mark;
+//
+//    @ApiOperation(value = "获取sever mark")
+//    @RequestMapping(value = "/getMark", method = RequestMethod.GET)
+//    private String getMark(){
+//        return mark;
+//    }
+
     @ApiOperation(value = "根据id查询", notes = "备注")
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public WebResponse<Person> getById(@PathVariable("id") String id){

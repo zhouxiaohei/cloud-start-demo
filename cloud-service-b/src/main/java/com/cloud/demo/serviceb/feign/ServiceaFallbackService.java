@@ -2,7 +2,7 @@ package com.cloud.demo.serviceb.feign;
 
 import com.cloud.demo.common.WebResponse;
 import com.cloud.demo.common.bean.Person;
-import com.cloud.demo.serviceb.feign.hystrix.ServiceaFallback;
+import com.cloud.demo.serviceb.feign.hystrix.ServiceaFallbackFactory;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * @Author JackZhou
  * @Date 2020/3/18  16:55
  **/
-//@FeignClient(value = "service-a", fallbackFactory = ServiceaFallbackFactory.class)
-@FeignClient(value = "service-a1", fallback = ServiceaFallback.class)
+@FeignClient(value = "service-a1", fallbackFactory = ServiceaFallbackFactory.class)
+//@FeignClient(value = "service-a1", fallback = ServiceaFallback.class)
 public interface ServiceaFallbackService {
 
     @RequestMapping(value = "/demo/servicea/person/{id}", method = RequestMethod.GET)

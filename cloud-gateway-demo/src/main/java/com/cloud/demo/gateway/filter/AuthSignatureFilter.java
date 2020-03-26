@@ -1,8 +1,6 @@
 package com.cloud.demo.gateway.filter;
 
-import com.cloud.demo.gateway.feign.CommonServiceService;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
 import org.springframework.cloud.gateway.filter.GlobalFilter;
 import org.springframework.core.Ordered;
@@ -18,9 +16,6 @@ import reactor.core.publisher.Mono;
 @Slf4j
 public class AuthSignatureFilter implements GlobalFilter, Ordered {
 
-    @Autowired
-    private CommonServiceService serviceService;
-
     private static final String LOGIN_URL = "/api/v1/common/login";
 
     @Override
@@ -30,7 +25,7 @@ public class AuthSignatureFilter implements GlobalFilter, Ordered {
         if(!url.startsWith(LOGIN_URL)){
             String token = exchange.getRequest().getHeaders().getFirst("token");
             if (token == null || token.isEmpty()) {
-                log.info( "X-SSO-FullticketId is empty..." );
+                log.info( "token is empty..." );
                 exchange.getResponse().setStatusCode(HttpStatus.UNAUTHORIZED);
                 return exchange.getResponse().setComplete();
             }
