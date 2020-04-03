@@ -1,0 +1,20 @@
+server:
+  port: 19101
+spring:
+  application:
+     name: eureka-server
+eureka:
+  instance:
+    preferIpAddress: true
+  server:
+      enableSelfPreservation: false  #自我保护功能
+      # 生产环境建议维持默认值  服务清理间隔（单位毫秒，默认是60*1000）
+      #evictionIntervalTimerInMs: 20000
+  client:
+    registerWithEureka: true   #是否注册自身
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://localhost:19102/eureka/,http://localhost:19103/eureka/
+
+
+

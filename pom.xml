@@ -17,6 +17,7 @@
         <module>cloud-service-a</module>
         <module>cloud-service-b</module>
         <module>hystrix-demo</module>
+        <module>high-discovery-eureka</module>
     </modules>
 
     <properties>
