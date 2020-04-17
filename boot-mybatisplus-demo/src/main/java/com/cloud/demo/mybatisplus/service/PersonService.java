@@ -27,10 +27,22 @@ public class PersonService extends ServiceImpl<PersonMapper, Person> {
        return save(person);
     }
 
-    public IPage<Person> findByPage(String name){
+    public IPage<Person> findByPageBak(String name){
         Person person = new Person();
         person.setName(name);
         Wrapper<Person> wrapper = new QueryWrapper(person);
+        Page<Person> page = new Page<>();
+        IPage<Person> personIPage = baseMapper.selectPage(page, wrapper);
+        return personIPage;
+    }
+
+    /**
+      * @Author JackZhou
+      * @Description mybatis查询方式2
+     **/
+    public IPage<Person> findByPage(String name){
+        QueryWrapper<Person> wrapper = new QueryWrapper();
+        wrapper.lambda().like(Person :: getName, name);
         Page<Person> page = new Page<>();
         IPage<Person> personIPage = baseMapper.selectPage(page, wrapper);
         return personIPage;

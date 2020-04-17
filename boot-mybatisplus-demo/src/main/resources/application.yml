@@ -20,12 +20,14 @@ spring:
     test-on-borrow: true
     test-while-idle: true
 
+
 server:
   port: 11002
 
 mybatis-plus:
   type-aliases-package: com.cloud.demo.mybatisplus.dao.bean
   configuration:
-    map-underscore-to-camel-case: true
+    map-underscore-to-camel-case: true    # 驼峰转换
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl   # sql打印
 
 
