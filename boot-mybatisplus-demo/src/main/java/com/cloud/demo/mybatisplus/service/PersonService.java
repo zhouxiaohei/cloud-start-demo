@@ -10,6 +10,9 @@ import com.cloud.demo.mybatisplus.dao.bean.Person;
 import com.cloud.demo.mybatisplus.dao.mapper.PersonMapper;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Map;
+
 /**
  * @ClassName personService
  * @Description
@@ -38,7 +41,7 @@ public class PersonService extends ServiceImpl<PersonMapper, Person> {
 
     /**
       * @Author JackZhou
-      * @Description mybatis查询方式2
+      * @Description mybatis查询方式2  不指定固定字段名称查询   更优雅
      **/
     public IPage<Person> findByPage(String name){
         QueryWrapper<Person> wrapper = new QueryWrapper();
@@ -46,6 +49,17 @@ public class PersonService extends ServiceImpl<PersonMapper, Person> {
         Page<Person> page = new Page<>();
         IPage<Person> personIPage = baseMapper.selectPage(page, wrapper);
         return personIPage;
+    }
+
+    /**
+      * @Author JackZhou
+      * @Description  查询指定字段
+     **/
+    public List<Map<String, Object>> findFields(){
+        QueryWrapper<Person> wrapper = new QueryWrapper();
+        wrapper.lambda().eq(Person :: getName, "张三")
+                .select(Person::getName, Person ::getId);
+        return this.listMaps(wrapper);
     }
 
     public IPage<Person> testPage(String name){

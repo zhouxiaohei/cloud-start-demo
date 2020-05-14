@@ -67,13 +67,7 @@
                 <artifactId>postgresql</artifactId>
                 <version>${postgresql.driver.version}</version>
             </dependency>
-
-<!--            <dependency>-->
-<!--                <groupId>mysql</groupId>-->
-<!--                <artifactId>mysql-connector-java</artifactId>-->
-<!--                <version>${mysql.driver.version}</version>-->
-<!--            </dependency>-->
-            <!-- Mybatis-plus -->
+            
             <dependency>
                 <groupId>com.baomidou</groupId>
                 <artifactId>mybatis-plus-boot-starter</artifactId>
@@ -102,12 +96,6 @@
                 <version>${p6spy.p6spy}</version>
             </dependency>
 
-            <!-- cassandra uuid -->
-            <dependency>
-                <groupId>com.datastax.cassandra</groupId>
-                <artifactId>cassandra-driver-core</artifactId>
-                <version>${cassandra.version}</version>
-            </dependency>
         </dependencies>
     </dependencyManagement>
 
