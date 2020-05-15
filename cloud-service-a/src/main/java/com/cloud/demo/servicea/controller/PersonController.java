@@ -8,6 +8,7 @@ import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,14 +29,14 @@ public class PersonController {
    @Autowired
    private PersonService personService;
 
-//    @Value("${self.server.mark}")
-//    private String mark;
-//
-//    @ApiOperation(value = "获取sever mark")
-//    @RequestMapping(value = "/getMark", method = RequestMethod.GET)
-//    private String getMark(){
-//        return mark;
-//    }
+    @Value("${self.server.mark:empty}")
+    private String mark;
+
+    @ApiOperation(value = "获取sever mark")
+    @RequestMapping(value = "/getMark", method = RequestMethod.GET)
+    private String getMark(){
+        return mark;
+    }
 
     @ApiOperation(value = "根据id查询", notes = "备注")
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
