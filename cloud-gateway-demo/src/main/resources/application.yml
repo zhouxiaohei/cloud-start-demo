@@ -17,6 +17,7 @@ spring:
             - Path=/api/v1/demo/servicea/**
           filters:
             - StripPrefix=2
+            - RequestTime=true
 
 eureka:
   client:
