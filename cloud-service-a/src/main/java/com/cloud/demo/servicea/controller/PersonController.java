@@ -14,6 +14,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
+
+import javax.servlet.http.HttpServletRequest;
+import java.util.Enumeration;
 
 /**
  * @ClassName PersonController
@@ -42,6 +47,7 @@ public class PersonController {
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public WebResponse<Person> getById(@PathVariable("id") String id){
         log.info("根据id {} 进行查询", id);
+        printHeader();
         return WebResponse.<Person>builder().result(personService.get(id)).build();
     }
 
@@ -58,7 +64,20 @@ public class PersonController {
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public WebResponse<Person> delete(@PathVariable("id") String id){
         log.info("调用删除接口");
+        printHeader();
         return WebResponse.<Person>builder().result(personService.delete(id)).build();
+    }
+
+    public void printHeader(){
+        ServletRequestAttributes attrs = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
+        if (attrs != null) {
+            HttpServletRequest request = attrs.getRequest();
+            Enumeration<String> headerNames = request.getHeaderNames();
+            while(headerNames.hasMoreElements()){
+                String header = headerNames.nextElement();
+                log.info("请求头 {} ： {}", header, request.getHeader(header));
+            }
+        }
     }
 
 }
