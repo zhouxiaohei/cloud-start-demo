@@ -1,0 +1,14 @@
+@Component
+@ConfigurationProperties(prefix = "data.collect")
+public class ScheduledConfigInfo {
+
+    private List<ScheduledConfig> scheduled = new ArrayList<>();
+
+    public List<ScheduledConfig> getScheduled() {
+        return scheduled;
+    }
+
+    public void setList(List<ScheduledConfig> scheduled) {
+        this.scheduled = scheduled;
+    }
+}
