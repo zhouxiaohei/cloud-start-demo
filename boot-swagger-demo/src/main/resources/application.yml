@@ -8,7 +8,18 @@ spring:
 
 server:
   port: 11001
-
+  
+data:
+  collect:
+    scheduled:
+      - taskName: taskName
+        taskType: taskType
+        storeId: 111111
+        taskTimes: "1:00,6:00,20:55"
+        priority: 1
+        retryTimes: 3
+        severParams: "json数据"
+        taskCollectParams: 中文名称
 
 
 
