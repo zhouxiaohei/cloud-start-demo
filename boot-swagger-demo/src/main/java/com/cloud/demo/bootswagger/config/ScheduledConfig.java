@@ -1,3 +1,7 @@
+package com.cloud.demo.bootswagger.config;
+
+import lombok.Data;
+
 /**
  * @ClassName ScheduledConfig
  * @Author JackZhou
